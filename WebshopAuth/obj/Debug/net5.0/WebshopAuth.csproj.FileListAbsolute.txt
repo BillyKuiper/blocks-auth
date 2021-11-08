@@ -50,7 +50,6 @@ C:\Users\billy\source\repos\WebShopAuth\WebshopAuth\obj\Debug\net5.0\staticwebas
 C:\Users\billy\source\repos\WebShopAuth\WebshopAuth\obj\Debug\net5.0\staticwebassets\WebshopAuth.StaticWebAssets.xml
 C:\Users\billy\source\repos\WebShopAuth\WebshopAuth\obj\Debug\net5.0\scopedcss\bundle\WebshopAuth.styles.css
 C:\Users\billy\source\repos\WebShopAuth\WebshopAuth\obj\Debug\net5.0\WebshopAuth.RazorTargetAssemblyInfo.cache
-C:\Users\billy\source\repos\WebShopAuth\WebshopAuth\obj\Debug\net5.0\WebshopAuth.csproj.CopyComplete
 C:\Users\billy\source\repos\WebShopAuth\WebshopAuth\obj\Debug\net5.0\WebshopAuth.dll
 C:\Users\billy\source\repos\WebShopAuth\WebshopAuth\obj\Debug\net5.0\ref\WebshopAuth.dll
 C:\Users\billy\source\repos\WebShopAuth\WebshopAuth\obj\Debug\net5.0\WebshopAuth.pdb

@@ -78,7 +78,7 @@ namespace WebshopAuth.Controllers
         [HttpPost]
         public User register([FromBody] User u)
         {
-            if (u.email == "" || u.name == "" || u.password == "")
+            if (u.email == "" || u.firstName == "" || u.lastName == "" || u.adress == "" || u.housenumber == "" || u.password == "")
             {
                 return null;
             }
@@ -110,10 +110,12 @@ namespace WebshopAuth.Controllers
 
         [Authorize]
         [HttpGet]
-        [Route("/[controller]/auth")]
-        public string authorize()
+        [Route("/[controller]/getUser")]
+        public User getUser([FromHeader] string Authorization)
         {
-            return "huts";
+            var x = TC.readOut(Authorization);
+            User user = db.Users.Where(x => x.email.Equals(x.email)).FirstOrDefault();
+            return user;
         }
     }
 }

@@ -46,9 +46,10 @@ namespace WebshopAuth.Controllers
 
         public List<Claim> readOut(string test)
         {
+            string[] tokentemp = test.Split(" ");
             List<Claim> data = new List<Claim>();
 
-            var token = test;
+            var token = tokentemp[1];
             var handler = new JwtSecurityTokenHandler();
             var jwtSecurityToken = handler.ReadJwtToken(token);
 

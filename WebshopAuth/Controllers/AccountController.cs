@@ -42,6 +42,7 @@ namespace WebshopAuth.Controllers
                 {
                     return null;
                 }
+
                 UserDTO uDTO = new UserDTO();
                 //wel gevonden valideren
                 if(Authorization == null)
@@ -53,23 +54,23 @@ namespace WebshopAuth.Controllers
                 {
                     //als token niet valid is
                     //redirect naar login
-                    validToken = loginNoToken(user.email, user.role);
-                    uDTO.email = u.email;
+                    validToken = loginNoToken(user.userId, user.role);
+                    uDTO.user = user;
                     uDTO.token = validToken;
                     return JsonConvert.SerializeObject(uDTO);
                 }
                 else
                 {
                     //Als token wel valid is log meteen in
-                    uDTO.email = u.email;
+                    uDTO.user = user;
                     uDTO.token = Authorization;
                     return JsonConvert.SerializeObject(uDTO);
                 }
             }
         }
-        public string loginNoToken(string email, int role)
+        public string loginNoToken(int id, int role)
         {
-            string validToken = TC.nonExistentToken(email, role);
+            string validToken = TC.nonExistentToken(id, role);
 
             return validToken;
         }

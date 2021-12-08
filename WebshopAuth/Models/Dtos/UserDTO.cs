@@ -7,7 +7,7 @@ namespace WebshopAuth.Models.Dtos
 {
     public class UserDTO
     {
-        public string email { get; set; }
+        public User user { get; set; }
         public string token { get; set; }
     }
 }

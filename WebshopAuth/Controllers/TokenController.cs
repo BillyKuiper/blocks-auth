@@ -16,11 +16,11 @@ namespace WebshopAuth.Controllers
         private const string SECRET_KEY = "this is my custom Secret key for authnetication";
         public static readonly SymmetricSecurityKey SIGNING_KEY = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(TokenController.SECRET_KEY));
 
-        public object CreateToken(string username, int role)
+        public object CreateToken(int id, int role)
         {
-            if (username != null)
+            if (id != 0)
             {
-                return new ObjectResult(GenerateToken(username, role));
+                return new ObjectResult(GenerateToken(id, role));
             }
             else
             {
@@ -28,12 +28,12 @@ namespace WebshopAuth.Controllers
             }
         }
 
-        private object GenerateToken(string email, int role)
+        private object GenerateToken(int id, int role)
         {
             var token = new JwtSecurityToken(
                 claims: new Claim[]
                 {
-                    new Claim("email", email),
+                    new Claim("userId", Convert.ToString(id)),
                     new Claim(ClaimTypes.Role, role.ToString())
                 },
                 notBefore: DateTime.Now,
@@ -90,9 +90,9 @@ namespace WebshopAuth.Controllers
             }
         }
 
-        public string nonExistentToken(string email, int role)
+        public string nonExistentToken(int id, int role)
         {
-            var x = GenerateToken(email, role);
+            var x = GenerateToken(id, role);
             return x.ToString();
         }
     }

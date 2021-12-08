@@ -10,7 +10,7 @@ namespace WebShopAuth.test
         }
 
         [Test]
-        public void Test1()
+        public void fistTest()
         {
             Assert.Pass();
         }

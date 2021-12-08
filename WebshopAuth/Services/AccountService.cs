@@ -26,11 +26,6 @@ namespace WebshopAuth.Services
             return dc.Users.Where(x => x.email.Equals(u.email) && x.password.Equals(u.password)).FirstOrDefault();
         }
 
-        public string loginNoToken(int id, int role)
-        {
-            throw new NotImplementedException();
-        }
-
         public User checkRegistered(User u)
         {
             try

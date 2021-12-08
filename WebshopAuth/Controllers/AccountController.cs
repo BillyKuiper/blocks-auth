@@ -33,7 +33,7 @@ namespace WebshopAuth.Controllers
 
             string json = JsonConvert.SerializeObject(user);
 
-            if (json == "[]")
+            if (json == "null")
             {
                 return "Niet gevonden";
             }

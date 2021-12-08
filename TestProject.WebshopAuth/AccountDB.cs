@@ -91,11 +91,6 @@ namespace TestProject.WebshopAuth
             return null;
         }
 
-        public string loginNoToken(int id, int role)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool register(User u)
         {
             try

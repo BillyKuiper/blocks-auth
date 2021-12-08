@@ -9,7 +9,6 @@ namespace WebshopAuth.Services
     public interface IAccount
     {
         public User login(User u);
-        public string loginNoToken(int id, int role);
         public User checkRegistered(User u);
         public bool register(User u);
         public User getUserById(string userId);

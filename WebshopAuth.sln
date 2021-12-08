@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebshopAuth", "WebshopAuth\WebshopAuth.csproj", "{4BC544EF-0DC6-4794-BC9F-92487BA2F9DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebshopAuth", "WebshopAuth\WebshopAuth.csproj", "{4BC544EF-0DC6-4794-BC9F-92487BA2F9DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject.WebshopAuth", "TestProject.WebshopAuth\TestProject.WebshopAuth.csproj", "{9AEE84F9-136B-4E1F-820D-08C0A81D68CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4BC544EF-0DC6-4794-BC9F-92487BA2F9DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BC544EF-0DC6-4794-BC9F-92487BA2F9DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BC544EF-0DC6-4794-BC9F-92487BA2F9DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AEE84F9-136B-4E1F-820D-08C0A81D68CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AEE84F9-136B-4E1F-820D-08C0A81D68CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AEE84F9-136B-4E1F-820D-08C0A81D68CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AEE84F9-136B-4E1F-820D-08C0A81D68CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

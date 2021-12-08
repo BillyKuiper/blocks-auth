@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace WebShopAuth.test
+namespace TestProject.WebshopAuth
 {
     public class Tests
     {
@@ -10,7 +10,7 @@ namespace WebShopAuth.test
         }
 
         [Test]
-        public void fistTest()
+        public void Test1()
         {
             Assert.Pass();
         }

@@ -14,6 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebshopAuth.Controllers;
 using WebshopAuth.Data;
+using WebshopAuth.Services;
 
 namespace WebshopAuth
 {
@@ -62,6 +63,7 @@ namespace WebshopAuth
                         .AllowAnyHeader();
                     });
             });
+            services.AddTransient<IAccount, AccountService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

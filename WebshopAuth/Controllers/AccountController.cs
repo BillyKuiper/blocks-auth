@@ -4,21 +4,22 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebshopAuth.Data;
 using WebshopAuth.Models;
 using WebshopAuth.Models.Dtos;
+using WebshopAuth.Services;
 
 namespace WebshopAuth.Controllers
 {
     public class AccountController : Controller
     {
-
-        private readonly DataContext db;
+        private readonly IAccount _service;
         TokenController TC = new TokenController();
-        public AccountController(DataContext db)
+        public AccountController(IAccount _service)
         {
-            this.db = db;
+            this._service = _service;
         }
 
         [Route("/[controller]/login")]
@@ -28,7 +29,7 @@ namespace WebshopAuth.Controllers
             string validToken = "";
 
             //check if exists
-            var user = db.Users.Where(x => x.email.Equals(u.email) && x.password.Equals(u.password)).FirstOrDefault();
+            var user = _service.login(u);
 
             string json = JsonConvert.SerializeObject(user);
 
@@ -77,33 +78,32 @@ namespace WebshopAuth.Controllers
 
         [Route("/[controller]/register")]
         [HttpPost]
-        public User register([FromBody] User u)
+        public bool register([FromBody] User u)
         {
             if (u.email == "" || u.firstName == "" || u.lastName == "" || u.adress == "" || u.housenumber == "" || u.password == "")
             {
-                return null;
+                return false;
             }
             else
             {
-                var user = db.Users.Where(x => x.email.Equals(u.email)).FirstOrDefault();
+                var user = _service.checkRegistered(u);
 
                 if (user == null)
                 {
                     try
                     {
-                        db.Users.Add(u);
-                        db.SaveChanges();
-                        return u;
+                        return _service.register(u);
+                        
                         //redirect naar login page.
                     }
                     catch
                     {
-                        return null;
+                        return false;
                     }
                 }
                 else
                 {
-                    return null;
+                    return false;
                 }
             }
 
@@ -114,8 +114,18 @@ namespace WebshopAuth.Controllers
         [Route("/[controller]/getUser")]
         public User getUser([FromHeader] string Authorization)
         {
-            var x = TC.readOut(Authorization);
-            User user = db.Users.Where(x => x.email.Equals(x.email)).FirstOrDefault();
+            string userId = "0";
+            //list met claims
+            List<Claim> x = TC.readOut(Authorization);
+            foreach(Claim c in x)
+            {
+                if(c.Type == "userId")
+                {
+                    userId = c.Value;
+                }
+            }
+
+            User user = _service.getUserById(userId);
             return user;
         }
     }

@@ -53,10 +53,12 @@ namespace WebshopAuth
                 };
             });
 
-            services.AddCors(c =>
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
-                c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:8080"));
-            });
+                builder.WithOrigins("http://localhost:8080")
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
 
             services.AddTransient<IAccount, AccountService>();
         }
@@ -68,8 +70,8 @@ namespace WebshopAuth
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors(options => options.WithOrigins("http://localhost:8080"));
 
+            app.UseCors("MyPolicy");
             app.UseHttpsRedirection();
            
             app.UseRouting();

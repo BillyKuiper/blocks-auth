@@ -71,7 +71,6 @@ namespace WebshopAuth
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors("MyPolicy");
             app.UseHttpsRedirection();
            
             app.UseRouting();

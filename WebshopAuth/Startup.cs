@@ -20,6 +20,7 @@ namespace WebshopAuth
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -54,14 +55,14 @@ namespace WebshopAuth
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll",
-                    builder =>
-                    {
-                        builder
-                          .AllowAnyHeader()
-                          .AllowAnyMethod()
-                          .AllowAnyOrigin();
-                    });
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("*")
+                      .AllowAnyHeader()
+                      .AllowAnyMethod()
+                      .AllowAnyOrigin();
+                });
             });
             services.AddTransient<IAccount, AccountService>();
         }
@@ -74,7 +75,7 @@ namespace WebshopAuth
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors("AllowAll");
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseHttpsRedirection();
 
             app.UseRouting();

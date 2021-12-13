@@ -14,7 +14,6 @@ using WebshopAuth.Services;
 
 namespace WebshopAuth.Controllers
 {
-    [EnableCors("AllowAllHeaders")]
     public class AccountController : Controller
     {
         private readonly IAccount _service;

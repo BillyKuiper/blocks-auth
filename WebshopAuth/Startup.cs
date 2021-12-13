@@ -61,7 +61,6 @@ namespace WebshopAuth
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowAnyOrigin()
-                          .AllowCredentials();
                     });
             });
             services.AddTransient<IAccount, AccountService>();

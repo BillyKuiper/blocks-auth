@@ -55,7 +55,7 @@ namespace WebshopAuth
 
             services.AddCors(c =>
             {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+                c.AddPolicy("AllowOrigin", options => options.WithOrigins("http://localhost:8080"));
             });
 
             services.AddTransient<IAccount, AccountService>();
@@ -68,7 +68,7 @@ namespace WebshopAuth
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors(options => options.AllowAnyOrigin());
+            app.UseCors(options => options.WithOrigins("http://localhost:8080"));
 
             app.UseHttpsRedirection();
            

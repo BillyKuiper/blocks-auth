@@ -25,7 +25,6 @@ namespace WebshopAuth.Controllers
 
         [Route("/[controller]/login")]
         [HttpPost]
-        [EnableCors("AllowOrigin")]
         public string login([FromHeader] string Authorization, [FromBody] User u)
         {
             string validToken = "";

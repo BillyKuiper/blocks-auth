@@ -60,7 +60,7 @@ namespace WebshopAuth
                         builder
                           .AllowAnyHeader()
                           .AllowAnyMethod()
-                          .AllowAnyOrigin()
+                          .AllowAnyOrigin();
                     });
             });
             services.AddTransient<IAccount, AccountService>();

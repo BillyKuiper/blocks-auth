@@ -75,9 +75,9 @@ namespace WebshopAuth
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(MyAllowSpecificOrigins);
+            
             app.UseHttpsRedirection();
-
+            app.UseCors(MyAllowSpecificOrigins);
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

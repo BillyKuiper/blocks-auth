@@ -53,17 +53,11 @@ namespace WebshopAuth
                 };
             });
 
-            services.AddCors(options =>
+            services.AddCors(c =>
             {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                builder =>
-                {
-                    builder.WithOrigins("*")
-                      .AllowAnyHeader()
-                      .AllowAnyMethod()
-                      .AllowAnyOrigin();
-                });
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
+
             services.AddTransient<IAccount, AccountService>();
         }
 
@@ -74,8 +68,8 @@ namespace WebshopAuth
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors(MyAllowSpecificOrigins);
-            
+            app.UseCors(options => options.AllowAnyOrigin());
+
             app.UseHttpsRedirection();
            
             app.UseRouting();

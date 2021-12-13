@@ -57,10 +57,11 @@ namespace WebshopAuth
                 options.AddPolicy("AllowAll",
                     builder =>
                     {
-                        builder.WithOrigins("*")
+                        builder.WithOrigins("http://localhost:8080/")
                           .AllowAnyHeader()
                           .AllowAnyMethod()
-                          .AllowAnyOrigin();
+                          .AllowAnyOrigin()
+                          .AllowCredentials();
                     });
             });
             services.AddTransient<IAccount, AccountService>();

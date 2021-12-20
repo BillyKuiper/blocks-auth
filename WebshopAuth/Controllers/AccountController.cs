@@ -81,7 +81,8 @@ namespace WebshopAuth.Controllers
         [HttpPost]
         public bool register([FromBody] User u)
         {
-            if (u.email == "" || u.firstName == "" || u.lastName == "" || u.adress == "" || u.housenumber == "" || u.password == "")
+            if (u.email == "" || u.firstName == "" || u.lastName == "" || u.adress == "" || u.housenumber == "" || u.password == "" ||
+                u.email == null || u.firstName == null || u.lastName == null || u.adress == null || u.housenumber == null || u.password == null)
             {
                 return false;
             }
@@ -116,8 +117,17 @@ namespace WebshopAuth.Controllers
         public User getUser([FromHeader] string Authorization)
         {
             string userId = "0";
+            List<Claim> x = new List<Claim>();
             //list met claims
-            List<Claim> x = TC.readOut(Authorization);
+            try
+            {
+                x = TC.readOut(Authorization);
+            }
+            catch
+            {
+                return null;
+            }
+
             foreach(Claim c in x)
             {
                 if(c.Type == "userId")
@@ -125,9 +135,16 @@ namespace WebshopAuth.Controllers
                     userId = c.Value;
                 }
             }
-
-            User user = _service.getUserById(userId);
-            return user;
+            if(userId == "0")
+            {
+                return null;
+            }
+            else
+            {
+                User user = _service.getUserById(userId);
+                return user;
+            }
+            
         }
     }
 }

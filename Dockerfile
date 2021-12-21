@@ -5,6 +5,7 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 44319
 EXPOSE 49172
+EXPOSE 5000
 ENV ASPNETCORE_URLS http://*:44319
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build

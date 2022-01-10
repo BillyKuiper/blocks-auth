@@ -12,5 +12,6 @@ namespace WebshopAuth.Services
         public User checkRegistered(User u);
         public bool register(User u);
         public User getUserById(string userId);
+        public bool updatePassword(string userId, string newPassword);
     }
 }

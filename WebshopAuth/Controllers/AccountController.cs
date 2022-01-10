@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -145,6 +146,29 @@ namespace WebshopAuth.Controllers
                 return user;
             }
             
+        }
+
+        [Authorize]
+        [HttpPut]
+        [Route("/[controller]/changePassword")]
+        public bool changePassword([FromHeader] string Authorization, [FromBody] ChangePassword CP)
+        {
+            string userId = "";
+            List<Claim> claims = TC.readOut(Authorization);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "userId")
+                {
+                    userId = c.Value;
+                }
+            }
+            User u = _service.getUserById(userId);
+            if(u.password == CP.oldPW && CP.newPW == CP.confirmPW)
+            {
+                _service.updatePassword(userId, CP.newPW);
+                return true;
+            }
+            return false;
         }
     }
 }

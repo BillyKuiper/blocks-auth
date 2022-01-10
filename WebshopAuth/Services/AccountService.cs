@@ -51,5 +51,22 @@ namespace WebshopAuth.Services
             }
             
         }
+
+        public bool updatePassword(string userId, string newPassword)
+        {
+            try
+            {
+                User user = (from u in dc.Users
+                             where u.userId == Convert.ToInt32(userId)
+                             select u).SingleOrDefault();
+                user.password = newPassword;
+                dc.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

@@ -43,7 +43,7 @@ namespace WebshopAuth.Controllers
             {
                 if (user == null)
                 {
-                    return null;
+                    return "Database Probleem";
                 }
 
                 UserDTO uDTO = new UserDTO();

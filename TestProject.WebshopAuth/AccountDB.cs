@@ -109,5 +109,10 @@ namespace TestProject.WebshopAuth
                 return false;
             }
         }
+
+        public bool updatePassword(string userId, string newPassword)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
